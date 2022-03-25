@@ -1,0 +1,32 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Host {
+  hostId: String!
+  title: String!
+  host: String!
+}
+
+type ResponseType {
+  total: Int!
+  hostGroup: Host
+}
+
+type Query {
+  hello: String
+  getAllHost: [Host!]!
+  getHost(limit: Int, page: Int): ResponseType!
+}
+
+type Mutation {
+  createHost(createHostInput: CreateHostInput!): Host
+}
+
+input CreateHostInput {
+  """title"""
+  title: String!
+
+  """host"""
+  host: String!
+}
