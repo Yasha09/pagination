@@ -13,28 +13,8 @@ export class HostService {
     return await this.repo.save(host);
   }
   async getHosts({ limit = 5, page = 1 }) {
-    const hosts = await this.repo
-      .createQueryBuilder('host')
-      .select('host')
-      .offset((page - 1) * limit)
-      .limit(limit)
-      .getRawMany();
-
-    const total = await this.repo
-      .createQueryBuilder('host')
-      .select('host')
-      .getCount();
-
-    const result = hosts.reduce((tot, obj) => {
-      tot[obj.host_host] = tot[obj.host_host] || [];
-      tot[obj.host_host].push(obj);
-      return tot;
-    }, {});
-
-    return {
-      total,
-      hostGroup: [result],
-    };
+    const hosts = await this.repo.query(`select getHost(${page}, ${limit})`);
+    return hosts[0].gethost;
   }
 
   async getAllHost() {

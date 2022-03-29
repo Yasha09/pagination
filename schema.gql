@@ -3,20 +3,20 @@
 # ------------------------------------------------------
 
 type Host {
-  hostId: String!
+  hostid: String!
   title: String!
-  host: String!
+  hosturl: String!
 }
 
 type ResponseType {
-  total: Int!
-  hostGroup: Host
+  hosturl: String
+  items: [Host!]
 }
 
 type Query {
   hello: String
   getAllHost: [Host!]!
-  getHost(limit: Int, page: Int): ResponseType!
+  getHost(limit: Int, page: Int): [ResponseType!]!
 }
 
 type Mutation {

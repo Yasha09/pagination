@@ -6,7 +6,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 export class Host {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => String)
-  hostId: string;
+  hostid: string;
 
   @Column()
   @Field(() => String)
@@ -14,5 +14,5 @@ export class Host {
 
   @Column()
   @Field(() => String)
-  host: string;
+  hosturl: string;
 }

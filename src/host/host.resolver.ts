@@ -17,9 +17,9 @@ export class HostResolver {
     return this.hostService.getAllHost();
   }
 
-  @Query()
+  @Query(() => [ResponseType])
   async getHost(@Args() paginationArgs: PaginationArgs) {
-    return this.hostService.getHosts(paginationArgs);
+    return await this.hostService.getHosts(paginationArgs);
   }
 
   @Mutation(() => Host, { nullable: true })

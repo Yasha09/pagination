@@ -11,9 +11,9 @@ export class CreateHostInput {
 
 @ObjectType()
 export class ResponseType {
-  @Field(() => Int)
-  total: number;
+  @Field(() => String, { nullable: true })
+  hosturl: string;
 
-  @Field({ nullable: true })
-  hostGroup: any;
+  @Field(() => [Host], { nullable: true })
+  items: Host[];
 }
